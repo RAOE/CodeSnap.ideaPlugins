@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "commitlint": "^19.5.0",
+    "commitlint-config-wizardoc": "^1.0.1"
+  },
+  "scripts": {
+    "commitlint": "commitlint --from=HEAD~1 --to=HEAD"
+  }
+}
