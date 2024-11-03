@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - '**'  # 匹配所有分支
-    paths-ignore:  # 忽略特定路径，如果不设置，则所有路径的更改都会触发
+    paths-ignore:
       - 'docs/**'
       - 'README.md'
       - 'LICENSE'
@@ -15,13 +15,20 @@ jobs:
   commitlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Install required dependencies
-        run: |
-          npm install commitlint-config-wizardoc @commitlint/cli
-      - name: Lint Commit Messages
-        uses: wagoid/commitlint-github-action@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          config: commitlint.config.js
+          node-version: '14' # 你可以指定你需要的 Node.js 版本
+
+      - name: Install commitlint and config
+        run: |
+          npm install @commitlint/cli@version commitlint-config-wizardoc @version
+
+      - name: Lint Commit Messages
+        run: |
+          npx commitlint --from=HEAD~1 --to=HEAD --config commitlint.config.js
