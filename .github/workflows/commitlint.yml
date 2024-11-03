@@ -1,5 +1,16 @@
 name: Lint Commit Messages
-on: [pull_request]
+on:
+  push:
+    branches:
+      - '**'  # 匹配所有分支
+    paths-ignore:  # 忽略特定路径，如果不设置，则所有路径的更改都会触发
+      - 'docs/**'
+      - 'README.md'
+      - 'LICENSE'
+  pull_request:
+    branches:
+      - '**'  # 匹配所有分支
+
 jobs:
   commitlint:
     runs-on: ubuntu-latest
