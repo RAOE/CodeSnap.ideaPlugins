@@ -27,7 +27,7 @@ jobs:
 
       - name: Install commitlint and config
         run: |
-          npm install @commitlint/cli@version commitlint-config-wizardoc @version
+          npm install @commitlint/cli@version commitlint-config-wizardoc 
 
       - name: Lint Commit Messages
         run: |
