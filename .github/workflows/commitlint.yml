@@ -23,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14' # 你可以指定你需要的 Node.js 版本
+          node-version: '16' # 你可以指定你需要的 Node.js 版本
 
       - name: Install commitlint and config
         run: |
