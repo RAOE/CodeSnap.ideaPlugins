@@ -11,6 +11,7 @@ private const val BUNDLE = "messages.MyBundle"
 //test
 //test
 //test
+//test
 object MyBundle : DynamicBundle(BUNDLE) {
 
     @JvmStatic
