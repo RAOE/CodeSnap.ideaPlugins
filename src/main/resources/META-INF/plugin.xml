@@ -32,9 +32,10 @@
         </group>
         <group id="codeSnapAction" text="CodeSnap" popup="true" icon="SdkIcons.Sdk_default_icon">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <action id="defaultGenerate" class="com.github.raoe.codesnapidea.actions.DefaultCodeSnapAction" text="Default Generate"/>
-            <action id="jpgGenerate" class="com.github.raoe.codesnapidea.actions.JpgCodeSnapAction" text="JPG Generate"/>
-            <action id="svgGenerate" class="com.github.raoe.codesnapidea.actions.SvgCodeSnapAction" text="SVG Generate"/>
+            <action id="copy into clipboard" class="com.github.raoe.codesnapidea.actions.DefaultCodeSnapAction" text="Default Generate"/>
+            <action id="copy JPG into clipboard" class="com.github.raoe.codesnapidea.actions.JpgCodeSnapAction" text="JPG Generate"/>
+            <action id="copy SVG into clipboard" class="com.github.raoe.codesnapidea.actions.SvgCodeSnapAction" text="SVG Generate"/>
+            <action id="copy ASCII into clipboard" class="com.github.raoe.codesnapidea.actions.AsciiCodeSnapAction" text="ASCII Generate"/>
         </group>
     </actions>
 </idea-plugin>
