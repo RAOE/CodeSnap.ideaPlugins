@@ -38,4 +38,8 @@
             <action id="Copy ASCII into clipboard" class="com.github.raoe.codesnapidea.actions.AsciiCodeSnapAction" text="Copy ASCII into Clipboard"/>
         </group>
     </actions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 注册配置页面 -->
+        <applicationConfigurable parentId="tools" id="CodeSnapConfigurable" instance="CodeSnap"/>
+    </extensions>
 </idea-plugin>
