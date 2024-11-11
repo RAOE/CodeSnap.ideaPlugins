@@ -1,3 +1,5 @@
+<img width="390" src="/doc/logo.png" />
+
 # CodeSnap.idea
 
 ![Build](https://github.com/RAOE/CodeSnap.idea/workflows/Build/badge.svg)
