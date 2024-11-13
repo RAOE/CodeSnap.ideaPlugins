@@ -31,13 +31,11 @@ class CodeSnapSettingsUI {
 
 
     private val myPanel: JPanel = JPanel(FlowLayout())
-    private val myShortcutField: JCheckBox = JCheckBox("Enable Shortcut")
-    private val myShortcutTextField: JTextField = JTextField(20)
+    private val myShortcutField: JCheckBox = JCheckBox("Default Save Path:")
     private val mySavePathField: JTextField = JTextField(20)
     private val mySavePathButton: JButton = JButton("Browse...")
     init {
-//        myPanel.add(myShortcutField)
-//        myPanel.add(myShortcutTextField)
+        myPanel.add(myShortcutField)
         myPanel.add(mySavePathField)
         myPanel.add(mySavePathButton)
         mySavePathButton.addActionListener {
@@ -56,7 +54,6 @@ class CodeSnapSettingsUI {
     fun isModified(): Boolean {
         // 检查是否修改了设置
         return myShortcutField.isSelected != shortcutEnabled ||
-                myShortcutTextField.text != shortcut ||
                 mySavePathField.text != defaultSavePath
     }
 
@@ -64,7 +61,6 @@ class CodeSnapSettingsUI {
         // 应用设置的逻辑
         // 这里需要具体实现
         shortcutEnabled = myShortcutField.isSelected
-        shortcut = myShortcutTextField.text
         defaultSavePath = mySavePathField.text
         thisLogger().info("app apply>>>>>>>>>>>>>>>>>>>>>>>")
     }
@@ -73,20 +69,17 @@ class CodeSnapSettingsUI {
         // 重置设置的逻辑
         // 这里需要具体实现
         myShortcutField.isSelected = shortcutEnabled
-        myShortcutTextField.text = shortcut
         mySavePathField.text = defaultSavePath
         thisLogger().info("app reset>>>>>>>>>>>>>>>>>>>>>>>")
     }
 
     fun saveSettings() {
         val properties = ServiceManager.getService(PropertiesComponent::class.java)
-        properties.setValue("codeSnapShortcut", myShortcutTextField.text)
         properties.setValue("codeSnapSavePath", mySavePathField.text)
     }
 
     fun loadSettings() {
         val properties = ServiceManager.getService(PropertiesComponent::class.java)
-        myShortcutTextField.text = properties.getValue("codeSnapShortcut", "defaultShortcut")
         mySavePathField.text = properties.getValue("codeSnapSavePath", "defaultSavePath")
     }
 }
