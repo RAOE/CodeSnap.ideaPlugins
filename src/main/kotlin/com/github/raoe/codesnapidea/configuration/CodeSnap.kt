@@ -1,7 +1,7 @@
 package com.github.raoe.codesnapidea.configuration;
 
-import com.github.raoe.codesnapidea.ui.CodeSnapSettingsUI
-import com.intellij.openapi.components.BaseState
+import CodeSnapSettingsUI
+
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.options.ConfigurationException
 import org.jetbrains.annotations.Nls
@@ -16,7 +16,7 @@ import javax.swing.JComponent
  * @DATE:13/11/2024 9:34 pm
  * @Author:XuYuanFeng TODO:
  */
-class CodeSnapConfiguration: Configurable {
+class CodeSnap: Configurable {
     private var mySettingsUI: CodeSnapSettingsUI? = null
     @Nls
     override fun getDisplayName(): String {

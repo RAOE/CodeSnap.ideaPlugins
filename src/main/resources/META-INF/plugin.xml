@@ -40,6 +40,6 @@
     </actions>
     <extensions defaultExtensionNs="com.intellij">
         <!-- 注册配置页面 -->
-        <applicationConfigurable parentId="tools" id="CodeSnapConfigurable" instance="com.github.raoe.codesnapidea.configuration.CodeSnapConfiguration"/>
+        <applicationConfigurable parentId="tools" id="CodeSnapConfigurable" instance="com.github.raoe.codesnapidea.configuration.CodeSnap"/>
     </extensions>
 </idea-plugin>
