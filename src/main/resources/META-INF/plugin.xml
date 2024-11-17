@@ -17,7 +17,7 @@
         <group id="org.intellij.sdk.action.GroupedActions"
                text="Static Grouped Actions" description="SDK statically grouped action example"
                popup="true" icon="SdkIcons.Sdk_default_icon">
-            <action id="org.intellij.sdk.action.PopupDialogAction" class="com.github.raoe.codesnapidea.actions.PopupDialogAction"
+            <action id="org.intellij.sdk.action.CodeSnapConfigurable" class="com.github.raoe.codesnapidea.actions.PopupDialogAction"
                     text="CodeSnap" description="SDK action example"
                     icon="SdkIcons.Sdk_default_icon">
                 <!-- 添加到工具菜单 -->

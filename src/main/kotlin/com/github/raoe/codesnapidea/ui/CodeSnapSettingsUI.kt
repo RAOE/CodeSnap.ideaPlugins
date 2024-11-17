@@ -3,6 +3,7 @@ package com.github.raoe.codesnapidea.ui;
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.diagnostic.thisLogger
+import org.jdesktop.swingx.JXTextField
 import java.awt.FlowLayout
 import java.io.File
 import java.util.*
@@ -17,25 +18,17 @@ import javax.swing.*
  */
 class CodeSnapSettingsUI {
     private val properties: PropertiesComponent = ServiceManager.getService(PropertiesComponent::class.java)
-    var shortcutEnabled: Boolean
-        get() = properties.getBoolean("codeSnap.shortcutEnabled", false)
-        set(value) = properties.setValue("codeSnap.shortcutEnabled", value)
-
-    var shortcut: String
-        get() = properties.getValue("codeSnap.shortcut", "defaultShortcut")
-        set(value) = properties.setValue("codeSnap.shortcut", value)
-
-    var defaultSavePath: String
+    private var defaultSavePath: String
         get() = properties.getValue("codeSnap.defaultSavePath", "/default/path")
         set(value) = properties.setValue("codeSnap.defaultSavePath", value)
-
-
-    private val myPanel: JPanel = JPanel(FlowLayout())
-    private val myShortcutField: JCheckBox = JCheckBox("Default Save Path:")
+    private val myPanel: JPanel = JPanel(FlowLayout(FlowLayout.LEFT))
     private val mySavePathField: JTextField = JTextField(20)
     private val mySavePathButton: JButton = JButton("Browse...")
+    private val mySavePathLabel: JLabel = JLabel("默认保存路径:")
     init {
-        myPanel.add(myShortcutField)
+        // 使用 defaultSavePath 属性来设置 JTextField 的值
+        defaultSavePath = "/default/path"
+        myPanel.add(mySavePathLabel)
         myPanel.add(mySavePathField)
         myPanel.add(mySavePathButton)
         mySavePathButton.addActionListener {
@@ -43,6 +36,8 @@ class CodeSnapSettingsUI {
             fileChooser.selectedFile = File(mySavePathField.text)
             if (fileChooser.showOpenDialog(myPanel) == JFileChooser.APPROVE_OPTION) {
                 mySavePathField.text = fileChooser.selectedFile.absolutePath
+                // 更新 defaultSavePath 属性
+                defaultSavePath = fileChooser.selectedFile.absolutePath
             }
         }
     }
@@ -53,14 +48,12 @@ class CodeSnapSettingsUI {
 
     fun isModified(): Boolean {
         // 检查是否修改了设置
-        return myShortcutField.isSelected != shortcutEnabled ||
-                mySavePathField.text != defaultSavePath
+        return mySavePathField.text != defaultSavePath
     }
 
     fun apply() {
         // 应用设置的逻辑
         // 这里需要具体实现
-        shortcutEnabled = myShortcutField.isSelected
         defaultSavePath = mySavePathField.text
         thisLogger().info("app apply>>>>>>>>>>>>>>>>>>>>>>>")
     }
@@ -68,7 +61,6 @@ class CodeSnapSettingsUI {
     fun reset() {
         // 重置设置的逻辑
         // 这里需要具体实现
-        myShortcutField.isSelected = shortcutEnabled
         mySavePathField.text = defaultSavePath
         thisLogger().info("app reset>>>>>>>>>>>>>>>>>>>>>>>")
     }
