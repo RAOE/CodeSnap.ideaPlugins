@@ -1,3 +1,8 @@
+<img width="390" src="/doc/logo.png" />
+
+> [!WARNING]  
+> Notice: This project is still in WIP, and hasn't publish to plugin market
+
 # CodeSnap.idea
 
 ![Build](https://github.com/RAOE/CodeSnap.idea/workflows/Build/badge.svg)
